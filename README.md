@@ -1,164 +1,62 @@
-# PHP Random Name Generator
+# Alias Gen
 
-PHP class capable of generating millions of random name combinations (first names and surnames) for use as demo data in applications and other projects.
+Go based API for generating usernames, emails, and passwords for test data. Soon
+to include other information for fulfilling tests.
 
 ## Requirements
 
-PHP 5.3+
+`Go 1.18`
+
+## Free API
+
+At some point, you can expect https://exhausted.club/aliasgen to be a working
+API to generate test data, if you don't want to spin up your own version.
 
 ## Usage
 
-Upload the the php-random-name-generator folder to your desired location and include the class:
+TBA
+
+## License
 
 ```
-include 'php-random-name-generator/randomNameGenerator.php';
+MIT License
+
+Copyright (c) 2023 Exhausted Club
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
-Inititate the class and set the output format. Available output formats are 'array', 'associative_array' and 'json'. If no output is specified, an array will be used. See below for a sample output for each.
+## Original Work
 
-```
-$r = new randomNameGenerator('array');
-```
+The original work was forked from
+https://github.com/edwardr/php-random-name-generator, but this was for the seed
+data to generate names. The code aspect was not copied over, and was written
+from the ground up using Go. IMHO the license should still be copied over, as
+the data from the JSON could be considered falling under the license, and
+therefore this project falls in line with MIT, however, IANAL so feel free to
+open an issue to correct this if need be, I suppose.
 
-Generate the names by passing the number of names you want to create:
+## TODO:
 
-```
-$names = $r->generateNames(10);
-```
-
-Now you can iterate through the data and create user accounts or do whatever you want with it (don't be evil).
-
-### Sample Outputs
-
-#### JSON
-
-```
-[
-  {
-    "first_name": "Fernande",
-    "last_name": "Hauer"
-  },
-  {
-    "first_name": "Erlinda",
-    "last_name": "Thiel"
-  },
-  {
-    "first_name": "Elena",
-    "last_name": "Soleman"
-  },
-  {
-    "first_name": "Hiroko",
-    "last_name": "Froncillo"
-  },
-  {
-    "first_name": "Jordon",
-    "last_name": "Buehring"
-  },
-  {
-    "first_name": "Verlie",
-    "last_name": "Coelho"
-  },
-  {
-    "first_name": "Amos",
-    "last_name": "Wernecke"
-  },
-  {
-    "first_name": "Chasidy",
-    "last_name": "Jaskolski"
-  },
-  {
-    "first_name": "Dollie",
-    "last_name": "Estrem"
-  },
-  {
-    "first_name": "Noma",
-    "last_name": "Mends"
-  }
-]
-```
-
-#### Array
-
-```
-Array
-(
-    [0] => Stacee Scheiderer
-    [1] => Ambrose Sens
-    [2] => Quinton Spratte
-    [3] => Jolie Kapsalis
-    [4] => Barbra Krawiec
-    [5] => Phylicia Eikmeier
-    [6] => Walton Chalfin
-    [7] => Letha Prakash
-    [8] => Tu Grenke
-    [9] => Brunilda Kirstein
-)
-```
-
-#### Associative Array
-
-```
-Array
-(
-    [0] => Array
-        (
-            [first_name] => Annabel
-            [last_name] => Mapa
-        )
-
-    [1] => Array
-        (
-            [first_name] => Claire
-            [last_name] => Iovino
-        )
-
-    [2] => Array
-        (
-            [first_name] => Agripina
-            [last_name] => Gillig
-        )
-
-    [3] => Array
-        (
-            [first_name] => Kathern
-            [last_name] => Strausbaugh
-        )
-
-    [4] => Array
-        (
-            [first_name] => Delbert
-            [last_name] => Whitescarver
-        )
-
-    [5] => Array
-        (
-            [first_name] => Marlon
-            [last_name] => Botz
-        )
-
-    [6] => Array
-        (
-            [first_name] => Patrice
-            [last_name] => Baller
-        )
-
-    [7] => Array
-        (
-            [first_name] => Teodora
-            [last_name] => Semmes
-        )
-
-    [8] => Array
-        (
-            [first_name] => Billy
-            [last_name] => Hruby
-        )
-
-    [9] => Array
-        (
-            [first_name] => Sammy
-            [last_name] => Hess
-        )
-
-)
-```
+- Potentially remove spaces and `\n` from the resource.json files to save on
+  bytes as well as read time. While it might not be significant, might as well.
+  Also maybe store them in a format more optimal for reading into memory.
+- Swagger gen
+- Rate Limiting based off of IP (Must be done before API opening)
+- API Keys (Must be done before API opening)
